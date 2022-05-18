@@ -7,6 +7,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 @Injectable({
   providedIn: 'root',
 })
@@ -21,6 +22,10 @@ export class AuthService {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
+  
+      user;
+      
+
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
@@ -29,20 +34,31 @@ export class AuthService {
         localStorage.setItem('user', 'null');
         JSON.parse(localStorage.getItem('user')!);
       }
+        this.userData;
+      
     });
   }
   // Sign in with email/password
   SignIn(email: string, password: string) {
+    // console.log(this.afAuth);
+    
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then((result) => {      
+  
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['/dashboard']);
         });
+        console.log(result.user);
+        
         this.SetUserData(result.user);
+
+
+        return true;
       })
       .catch((error) => {
         window.alert(error.message);
+        return false;
       });
   }
   // Sign up with email/password
@@ -81,7 +97,10 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null; 
+
+    // TODO: check for verified email. :)
+    // && user.emailVerified !== false ? true : false;
   }
   // Sign in with Google
   GoogleAuth() {
@@ -93,17 +112,22 @@ export class AuthService {
   }
   // Auth logic to run auth providers
   AuthLogin(provider: any) {
+    console.log(this.afAuth);
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
         });
+        console.log(result.user);
+        
         this.SetUserData(result.user);
       })
       .catch((error) => {
         window.alert(error);
       });
+      
+      
   }
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
@@ -112,6 +136,7 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
+    
     const userData: User = {
       uid: user.uid,
       email: user.email,

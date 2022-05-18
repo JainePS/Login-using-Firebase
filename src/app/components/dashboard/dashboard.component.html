@@ -1,7 +1,6 @@
 <!-- Top navigation -->
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0">
-    </a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0"> </a>
 </nav>
 <!-- Sidebar navigation -->
 <div class="container-fluid">
@@ -33,12 +32,25 @@
                 <div class="row" *ngIf="authService.userData as user">
                     <div class="col-md-12">
                         <div class="media">
-                            <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}">
+                            <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{
+                  user.photoURL ? user.photoURL : '/assets/dummy-user.png'
+                }}" alt="{{ user.displayName }}" />
                             <div class="media-body">
-                                <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
-                                <p>User ID: <strong>{{user.uid}}</strong></p>
-                                <p>Email: <strong>{{user.email}}</strong></p>
-                                <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+                                <h1>
+                                    Hello:
+                                    <strong>{{
+                    user.displayName ? user.displayName : "User"
+                  }}</strong>
+                                </h1>
+                                <p>
+                                    User ID: <strong>{{ user.uid }}</strong>
+                                </p>
+                                <p>
+                                    Email: <strong>{{ user.email }}</strong>
+                                </p>
+                                <p>
+                                    Email Verified: <strong>{{ user.emailVerified }}</strong>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -47,3 +59,56 @@
         </main>
     </div>
 </div>
+
+<Div>
+    <h1>Mapa de mesas</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col text-right">
+            <button routerLink="/table/new" class="btn btn-primary">
+        <i class="fa-solid fa-plus"></i>
+        Add
+      </button>
+        </div>
+    </div>
+    <h1></h1>
+    <table class="table table-dark table-striped">
+        <thead class="thead">
+            <tr class="text-center">
+                <th scope="col">Mesa</th>
+                <th scope="col">Lugares</th>
+                <th scope="col">Status</th>
+                <th scope="col">Atualizar</th>
+            </tr>
+        </thead>
+
+        <tbody class="text-center tbody-light">
+            <tr *ngFor="let table of tables; let i = index">
+                <td>{{table.nome }}</td>
+                <td>{{table.lugares}}</td>
+                <td>
+                    <label *ngIf="table.ocupada" class="badge bg-danger">Ocupada</label>
+                    <label *ngIf="!table.ocupada" class="badge bg-success">Livre</label>
+                </td>
+
+                <td>
+                    <button class="center btn btn-info" [routerLink]="['/table', table.id]">
+                     <i class="fa fa-pen"></i>
+                    </button>
+                    <button class="btn btn-danger" (click)="deleteTable(table, i)">
+                     <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="tables.length === 0" class="alert alert-warning text-center mt-3">
+        <h4 class="alert-heading">There is no registers</h4>
+        <p>
+            <i class="fa fa-exclamation fa-2x"></i>
+        </p>
+    </div>
+
+</Div>

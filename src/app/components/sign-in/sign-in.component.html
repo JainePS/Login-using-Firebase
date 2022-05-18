@@ -1,35 +1,41 @@
-<div class="center">
+<div class="px-4 py-3 container col-7">
     <div class="displayTable">
         <div class="displayTableCell">
             <div class="authBlock">
-                <h3>Sign In</h3>
-                <div class="formGroup">
-                    <input type="text" class="formControl" placeholder="Username" #userName required>
+                <h3 class="text-center">Login</h3>
+                <div class="form-group mt-2 ">
+                    <input type="text" class="form-control" placeholder="Username" #userName required />
                 </div>
-                <div class="formGroup">
-                    <input type="password" class="formControl" placeholder="Password" #userPassword required>
+                <div class="formGroup mt-2 ">
+                    <input type="password" class="form-control" placeholder="Password" #userPassword required />
                 </div>
                 <!-- Calling SignIn Api from AuthService -->
-                <div class="formGroup">
-                    <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+                <div class="formGroup mt-2">
+                    <button class="btn btn-primary container" value="Log In" (click)="login(userName.value, userPassword.value)">Enter</button>
                 </div>
-                <div class="formGroup">
+                <div class="formGroup mt-2">
                     <span class="or"><span class="orInner">Or</span></span>
                 </div>
                 <!-- Calling GoogleAuth Api from AuthService -->
-                <div class="formGroup">
-                    <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-            <i class="fab fa-google-plus-g"></i>
+                <div class="formGroup mt-2">
+                    <button type="button" class="btn btn-primary container" (click)="authService.GoogleAuth()">
+            <i class="fab fa-google-plus-g "></i>
             Log in with Google
           </button>
                 </div>
-                <div class="forgotPassword">
-                    <span routerLink="/forgot-password">Forgot Password?</span>
+                <div class="forgotPassword mt-2 text-center">
+                    <span type="button btn-outline" routerLink="/forgot-password">Forgot Password?</span>
                 </div>
             </div>
-            <div class="redirectToLogin">
-                <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
-            </div>
-        </div>
+            <div class="redirectToLogin mt-2 text-center">
+                <span>Don't have an account?<span
+            class="redirect"
+            routerLink="/register-user"
+          >
+            Sign Up</span
+          ></span
+        >
+      </div>
     </div>
+  </div>
 </div>

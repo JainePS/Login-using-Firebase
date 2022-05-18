@@ -1,0 +1,77 @@
+<h1>Mapa de mesas<small> (mesa)</small></h1>
+<hr />
+
+<div class="row">
+    <div class="col text-right">
+        <button routerLink="/dashboard" class="btn btn-danger">
+      <i class="fa fa-arrow-left"></i>
+      Return
+    </button>
+    </div>
+</div>
+
+<div class="row animated__fadeIn faster">
+    <div class="col">
+        <form (ngSubmit)="allAboutTable( form ) " #form="ngForm">
+            <div class="form-group">
+                <div class="mb-3">
+                    <label>ID</label>
+                    <input type="text" class="form-control" placeholder="Table ID" [(ngModel)]="table.id" name="id" disabled="disabled" />
+                    <small class="form-text text-muted">This field is auto generate</small
+          >
+        </div>
+        <div class="mb-3">
+          <label>Mesa</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Número da mesa"
+            [(ngModel)]="table.nome"
+            name="nome"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label>Lugares</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Lugares disponíveis"
+            [(ngModel)]="table.lugares"
+            name="lugares"
+            required
+          />        
+        </div>
+
+        <div class="form-group">
+            <label>Status</label>
+            <br>
+            <button
+                    (click)="table.ocupada = false"
+                    class="btn btn-outline-success w-50" 
+                    type="button" >
+                <i class="fa fa-smile-wink" ></i>
+                Livre
+            </button>
+
+            <button 
+                    (click)="table.ocupada = true"
+                    class="btn btn-outline-danger w-50" type="button" >
+                <i class="fa fa-dizzy" ></i>
+                Ocupada
+            </button>
+        </div>
+
+        <hr>
+        <div class="form-group text-center" >
+            <button type="submit"
+                    class="btn btn-primary w-25" >
+                <i class="fa fa-save" ></i>
+            Save</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
