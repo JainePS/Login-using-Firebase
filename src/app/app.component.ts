@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mapa-mesas';
+
+
+  sideBarOpen = true;
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+
 }

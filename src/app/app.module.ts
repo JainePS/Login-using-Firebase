@@ -13,6 +13,8 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
+import { MaterialModule } from './material/material-modules/material-modules.module';
+
 //Components
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -25,6 +27,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { TableComponent } from './shared/components/table/table.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserProfileComponent } from './components/user-profile/user-profile.component'
 
 
 @NgModule({
@@ -38,7 +43,9 @@ import { TableComponent } from './shared/components/table/table.component';
     NavbarComponent,
     HomeComponent,
     LoginComponent,
-    TableComponent
+    TableComponent,
+    SidenavComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,9 @@ import { TableComponent } from './shared/components/table/table.component';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

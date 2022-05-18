@@ -11,6 +11,8 @@ import { AuthGuard } from './shared/guard/auth.guard';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { TableComponent } from './shared/components/table/table.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'table/:id', component: TableComponent },
+  {path:'sidenav', component: SidenavComponent},
+  {path:'user-profile', component: UserProfileComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
