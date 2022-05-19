@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,18 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'mapa-mesas';
 
+  @Input() isShowing: boolean;
 
-  sideBarOpen = true;
+  constructor(){
+    this.isShowing = false;
+  }
 
-  sideBarToggler() {
-    this.sideBarOpen = !this.sideBarOpen;
+  
+
+  sideBarToggler( isShowing: any ) {
+    console.log('olá');
+    
+    this.isShowing = !this.isShowing;
   }
 
 }

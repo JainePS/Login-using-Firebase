@@ -1,8 +1,12 @@
 <mat-toolbar>
     <mat-toolbar-row class="justify-content-between">
+        <mat-sidenav></mat-sidenav>
         <button mat-icon-button (click)="toggleSidebar()">
         <mat-icon>menu</mat-icon>
       </button>
+
+
+        <!-- TODO: Retirar as opções de logout e user profile quando não está logado -->
         <div *ngIf="authservice.userData as user" class="row mr-2 ml-auto">
             <ul class="row m-0 align-items-center">
                 <li>

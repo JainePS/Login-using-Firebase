@@ -1,10 +1,11 @@
 <mat-drawer-container>
     <!-- <mat-drawer mode="side" [opened]="sideBarOpen"> -->
-    <mat-drawer mode="side" opened="true">
-        <app-sidenav></app-sidenav>
-    </mat-drawer>
+
     <mat-drawer-content>
-        <app-navbar (toggleSidebarForMe)="sideBarToggler()"></app-navbar>
+        <app-navbar (toggleSidebarForMe)="sideBarToggler($event)"></app-navbar>
         <router-outlet></router-outlet>
     </mat-drawer-content>
+    <mat-drawer mode="side" [opened]="isShowing">
+        <app-sidenav *ngIf="isShowing === true"></app-sidenav>
+    </mat-drawer>
 </mat-drawer-container>
