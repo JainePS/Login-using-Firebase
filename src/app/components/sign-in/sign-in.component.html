@@ -5,39 +5,51 @@
         <div class="displayTableCell">
             <div class="authBlock">
                 <h1 class="text-center">Login</h1>
-                <div class="form-group mt-2 ">
-                    <input type="text" class="form-control" placeholder="Username" #userName required />
-                </div>
-                <div class="formGroup mt-2 ">
-                    <input type="password" class="form-control" placeholder="Password" #userPassword required />
-                </div>
-                <!-- Calling SignIn Api from AuthService -->
+
+                <mat-form-field class="  container" appearance="outline">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput placeholder="E-mail" #userName required />
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>Por favor, insira um endereço de e-mail. </mat-hint>
+                </mat-form-field>
+                <mat-form-field class=" container" appearance="outline">
+                    <mat-label>Senha</mat-label>
+                    <input matInput placeholder="Senha" #userPassword required />
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-hint>Por favor, insira sua senha. </mat-hint>
+                </mat-form-field>
+
                 <div class="formGroup mt-2">
-                    <button class="btn btn-primary container" value="Log In" (click)="login(userName.value, userPassword.value)">Enter</button>
+                    <button class="btn btn-primary container" value="Log In" (click)="login(userName.value, userPassword.value)">
+            Enter
+          </button>
                 </div>
+
+
                 <div class="formGroup mt-2">
                     <span class="or"><span class="orInner">Or</span></span>
                 </div>
                 <!-- Calling GoogleAuth Api from AuthService -->
                 <div class="formGroup mt-2">
                     <button type="button" class="btn btn-primary container background: #1e293b;" (click)="loginWithGoogle()">
-            <i class="fab fa-google-plus-g "></i>
+            <i class="fab fa-google-plus-g"></i>
             Log in with Google
           </button>
                 </div>
-                <div class="forgotPassword mt-2 text-center">
-                    <span type="button btn-outline" routerLink="/forgot-password">Forgot Password?</span>
+                <div class="forgotPassword mt-2 text-center">Forgot Password?
+                    <a type="button btn-outline" mat-stroked routerLink="/forgot-password">Recuperar senha</a>
                 </div>
             </div>
             <div class="redirectToLogin mt-2 text-center">
-                <span>Don't have an account?<span
-            class="redirect"
-            routerLink="/register-user"
-          >
-            Sign Up</span
-          ></span
-        >
-      </div>
+                <div class="redirectToLogin">
+                    <span>Ainda tem uma conta ?
+            <a
+            type="button btn-outline" mat-stroked routerLink="/register-user"
+              >Registre-se</a
+            >
+          </span>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
