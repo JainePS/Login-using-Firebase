@@ -13,7 +13,11 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
+//Material module
 import { MaterialModule } from './material/material-modules/material-modules.module';
+
+//Authguard
+import { AuthGuard } from './shared/guard/auth.guard';
 
 //Components
 import { environment } from '../environments/environment';
@@ -25,7 +29,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
 import { AuthService } from './shared/services/auth.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
+
 import { TableComponent } from './shared/components/table/table.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -42,7 +46,6 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     VerifyEmailComponent,
     NavbarComponent,
     HomeComponent,
-    LoginComponent,
     TableComponent,
     SidenavComponent,
     UserProfileComponent
@@ -58,9 +61,10 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    
   ],
-  providers: [AuthService],
+  providers: [AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

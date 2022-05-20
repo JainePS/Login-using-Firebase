@@ -32,7 +32,8 @@ export class NavbarComponent implements OnInit {
     this.toggleSidebarForMe.emit(this.isShowing);
   }
   
-  singOut() {
-    return this.authservice.SignOut();
+  async singOut() {
+    const resp = await this.authservice.SignOut();
+    this.router.navigate(['/home']);
   }
 }

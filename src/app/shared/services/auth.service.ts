@@ -22,20 +22,14 @@ export class AuthService {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
-  
-      user;
-      
-
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
       } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
+        this.userData = null;
+        localStorage.removeItem('user');
       }
-        this.userData;
-      
     });
   }
   // Sign in with email/password
@@ -104,11 +98,7 @@ export class AuthService {
   }
   // Sign in with Google
   GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      if (res) {
-        this.router.navigate(['dashboard']);
-      }
-    });
+    return this.AuthLogin(new auth.GoogleAuthProvider());
   }
   // Auth logic to run auth providers
   AuthLogin(provider: any) {
@@ -117,7 +107,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['/dashboard']);
         });
         console.log(result.user);
         
@@ -150,10 +140,7 @@ export class AuthService {
   }
   // Sign out
   SignOut() {
-    return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
-    });
+    return this.afAuth.signOut();
   } 
 
 

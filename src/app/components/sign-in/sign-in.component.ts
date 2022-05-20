@@ -29,4 +29,17 @@ export class SignInComponent implements OnInit {
     }
 
   }
+
+  async loginWithGoogle() {
+    try {
+      const resp = await this.authService.GoogleAuth();
+
+      const a = await this.router.navigate(['/dashboard']); 
+
+      console.log(a);
+      
+    } catch (error) {
+      
+    }
+  }
 }
