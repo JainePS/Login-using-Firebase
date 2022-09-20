@@ -17,7 +17,7 @@ export class AppComponent {
   
 
   sideBarToggler( isShowing: any ) {
-    console.log('olá');
+    
     
     this.isShowing = !this.isShowing;
   }
